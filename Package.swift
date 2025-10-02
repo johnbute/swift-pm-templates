@@ -553,7 +553,9 @@ let package = Package(
                 "SourceControl",
                 "SPMBuildCore",
                 .product(name: "OrderedCollections", package: "swift-collections"),
-            ],
+                .product(name: "ArgumentParser", package: "swift-argument-parser"),
+                "PackageModelSyntax",
+            ] + swiftSyntaxDependencies(["SwiftIDEUtils", "SwiftParser"]),
             exclude: ["CMakeLists.txt"],
             swiftSettings: commonExperimentalFeatures + [
                 .unsafeFlags(["-static"]),
@@ -612,7 +614,8 @@ let package = Package(
                 "XCBuildSupport",
                 "SwiftBuildSupport",
                 "SwiftFixIt",
-            ] + swiftSyntaxDependencies(["SwiftIDEUtils", "SwiftRefactor"]),
+                "PackageRegistry",
+            ] + swiftSyntaxDependencies(["SwiftIDEUtils"]),
             exclude: ["CMakeLists.txt", "README.md"],
             swiftSettings: swift6CompatibleExperimentalFeatures + [
                 .unsafeFlags(["-static"]),
